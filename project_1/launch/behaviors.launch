@@ -1,0 +1,4 @@
+<launch>
+  <!-- Runs the turtlebot behaviors -->
+  <node pkg="project_1" type="project_1" name="behaviors"  output="screen"/>
+</launch>
