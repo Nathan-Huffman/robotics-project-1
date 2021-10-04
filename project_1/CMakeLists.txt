@@ -118,7 +118,6 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -135,7 +134,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(project_1 src/robot_move.cpp)
+add_executable(project_1 src/turtle_pilot.cpp src/turtle_sense.cpp src/turtle_behaviors.cpp src/turtle_move.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -161,8 +160,16 @@ ${catkin_LIBRARIES}
 
 ## Mark executable scripts (Python etc.) for installation
 install(PROGRAMS scripts/turtlebot_teleop_key
+  PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
+# Automatically set as executable, could be lost cloning Git
+execute_process(COMMAND bash -c
+  "chmod +x `find ~ -path */project_1/scripts/turtlebot_teleop_key`"
+  )
+# Autmomatically set as executable, requires CMake 3.14 or higher
+# file(CHMOD scripts/turtlebot_teleop_key
+#   PERMISSIONS OWNER_EXECUTE)
 
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html

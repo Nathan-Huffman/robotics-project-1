@@ -43,7 +43,7 @@
     <remap from="turtlebot_teleop_keyboard/cmd_vel" to="cmd_vel_mux/input/teleop"/>
   </node>
 
-  <!-- From gmapping_demo.launch -->
+  <!-- From gmapping_demo.launch-->
   <arg name="scan_topic" default="scan"/>
   <arg name="base_frame" default="base_footprint"/>
   <arg name="odom_frame" default="odom"/>
@@ -85,4 +85,5 @@
 
   <!-- From turtlebot_rviz_launchers/launch/view_navigation.launch-->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find project_1)/launch/view_map.rviz"/>
+  
 </launch>
